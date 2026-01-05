@@ -1,9 +1,11 @@
+var { regstdDAO } = require('../dao/studentDAO')
 var express = require('express');
 var router = express.Router();
 var { regstdService, getstdService } = require('../services/studentService')
 router.post('/std-reg', async function (req, res) {
     console.log('reg controller called');
-    var result = await regstdService(req);
+   // var result = await regstdService(req);
+   var result = await regstdDAO(req.body);
     res.send(result);
 })
 router.get('/std-get-reg', async function (req, res) {
@@ -11,4 +13,4 @@ router.get('/std-get-reg', async function (req, res) {
     var result = await getstdService();
     res.send(result);
 })
-module.exports = router;
+module.exports = router;  
